@@ -36,7 +36,8 @@ public class SecurityConfig {
 
     @Bean
     public Firestore firebaseApp() throws IOException {
-        String firebaseConfigJson = EnvLoader.get("firebase");
+        //String firebaseConfigJson = EnvLoader.get("firebase");
+        String firebaseConfigJson = EnvLoader2.getVariable("firebase");
         //FileInputStream serviceAccount = new FileInputStream("./appsettings.json");
         String pero = System.getenv("Pero");
 
