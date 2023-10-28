@@ -11,8 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 
+import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 @EnableWebSecurity
 public class SecurityConfig {
@@ -33,11 +36,16 @@ public class SecurityConfig {
 
     @Bean
     public Firestore firebaseApp() throws IOException {
-        String firebaseConfigJson = System.getenv("FIREBASE_CONFIG");
+        String firebaseConfigJson = EnvLoader.get("firebase");
         //FileInputStream serviceAccount = new FileInputStream("./appsettings.json");
+        String pero = System.getenv("Pero");
+
+        byte[] jsonBytes = firebaseConfigJson.getBytes(StandardCharsets.UTF_8);
+        InputStream inputStream = new ByteArrayInputStream(jsonBytes);
+
 
         FirebaseOptions options = new FirebaseOptions.Builder()
-                .setCredentials(GoogleCredentials.fromStream(new FileInputStream(firebaseConfigJson)))
+                .setCredentials(GoogleCredentials.fromStream(inputStream))
                 .build();
 
         FirebaseApp.initializeApp(options);
