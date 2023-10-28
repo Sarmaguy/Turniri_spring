@@ -33,10 +33,11 @@ public class SecurityConfig {
 
     @Bean
     public Firestore firebaseApp() throws IOException {
-        FileInputStream serviceAccount = new FileInputStream("./appsettings.json");
+        String firebaseConfigJson = System.getenv("FIREBASE_CONFIG");
+        //FileInputStream serviceAccount = new FileInputStream("./appsettings.json");
 
         FirebaseOptions options = new FirebaseOptions.Builder()
-                .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                .setCredentials(GoogleCredentials.fromStream(new FileInputStream(firebaseConfigJson)))
                 .build();
 
         FirebaseApp.initializeApp(options);
