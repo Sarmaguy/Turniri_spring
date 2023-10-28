@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ol>
+    <li th:each="kolo, koloIndex : ${kola}">
+        <p> kolo </p>
+        <ul>
+            <li th:each="utakmica, utakmicaIndex : ${kolo}" th:with="utakmicaNumber=${koloIndex.index + utakmicaIndex.index}">
+                <p th:text="${utakmica.toString()}"></p>
+                <div th:if="${isOwner and not utakmica.bye}" >
+                    <form th:action="@{'/update/' +${turnir} + '/' + ${koloIndex.index} +'/'+${utakmicaIndex.index}}" method="post">
+                        <input type="submit" value="Update">
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ol>
+
+<h2>Trenutacni poredak</h2>
+<ol>
+    <li th:each="tim : ${timovi}">
+        <p th:text="${tim.ime}+'   -    '+${tim.bodovi}"></p>
+
+    </li>
+</ol>
+</body>
+</html>

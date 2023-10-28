@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2 th:text="'Tim1: ' + ${utakmica.tim1}"></h2>
+<h2 th:text="'Tim2: ' + ${utakmica.tim2}"></h2>
+<form action="/unos" method="post">
+    <input hidden id="turnir" name="turnir" th:value="${turnir}">
+    <input hidden id="kolo" name="kolo" th:value="${kid}">
+    <input hidden id="utakmica" name="utakmica" th:value="${uid}">
+    <label for="ishod">Ishod:</label>
+    <select name="ishod" id="ishod">
+        <option th:each="rezultat : ${rezultati}"
+                th:value="${rezultat}"
+                th:text="${rezultat}"></option>
+    </select>
+    <input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>

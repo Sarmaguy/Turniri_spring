@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stvori turnir</title>
+</head>
+<body>
+<form action="create" method="post">
+  <label for="naziv">Naziv natjecanja:</label>
+    <input type="text" id="naziv" name="naziv" required><br><br>
+
+  <label for="popis">Popis natjecatelja:</label>
+    <textarea id="popis" name="popis" rows="8" required></textarea><br><br>
+
+
+  <p>Definiraj koliko koji ishod nosi bodova.</p>
+
+  <label for="pobjeda">Pobjeda:</label>
+    <input type="number" id="pobjeda" name="pobjeda"  required>
+
+  <label for="nerjeseno">Nerješeno:</label>
+    <input type="number" id="nerjeseno" name="nerjeseno" required>
+
+  <label for="poraz">Poraz:</label>
+    <input type="number" id="poraz" name="poraz" required><br><br>
+
+  <input type="submit" value="Stvori turnir">
+
+
+
+</form>
+
+</body>
+</html>
