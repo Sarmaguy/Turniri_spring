@@ -3,23 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light grey background */
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .submit-btn {
+            background-color: #6f42c1;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-<h2 th:text="'Tim1: ' + ${utakmica.tim1}"></h2>
-<h2 th:text="'Tim2: ' + ${utakmica.tim2}"></h2>
-<form action="/unos" method="post">
-    <input hidden id="turnir" name="turnir" th:value="${turnir}">
-    <input hidden id="kolo" name="kolo" th:value="${kid}">
-    <input hidden id="utakmica" name="utakmica" th:value="${uid}">
-    <label for="ishod">Ishod:</label>
-    <select name="ishod" id="ishod">
-        <option th:each="rezultat : ${rezultati}"
-                th:value="${rezultat}"
-                th:text="${rezultat}"></option>
-    </select>
-    <input type="submit" value="Submit">
-</form>
+<div class="container">
+    <h2 th:text="'Tim1: ' + ${utakmica.tim1}"></h2>
+    <h2 th:text="'Tim2: ' + ${utakmica.tim2}"></h2>
+    <form action="/unos" method="post">
+        <input hidden id="turnir" name="turnir" th:value="${turnir}">
+        <input hidden id="kolo" name="kolo" th:value="${kid}">
+        <input hidden id="utakmica" name="utakmica" th:value="${uid}">
+        <div class="form-group">
+            <label for="ishod">Ishod:</label>
+            <select name="ishod" id="ishod" class="form-control">
+                <option th:each="rezultat : ${rezultati}"
+                        th:value="${rezultat}"
+                        th:text="${rezultat}"></option>
+            </select>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary submit-btn">
+    </form>
+</div>
 
-
+<!-- Bootstrap JS (optional, for advanced features) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

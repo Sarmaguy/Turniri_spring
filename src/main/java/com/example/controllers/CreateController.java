@@ -83,10 +83,9 @@ public class CreateController {
 
         ApiFuture<WriteResult> a = db.collection(id).document(naziv).set(t);
 
+        String url = "/turnir/"+naziv +"+"+id;
 
-
-
-        return "redirect:/";
+        return "redirect:"+url;
 
     }
 }

@@ -1,37 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Stvori turnir</title>
+  <meta charset="UTF-8">
+  <title>Stvori turnir</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa; /* Light grey background */
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin-top: 50px;
+      max-width: 600px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+    h3 {
+      color: red;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="text"], input[type="number"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+    }
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .purple-btn {
+      background-color: #6f42c1;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
-<div th:if="${error!=null}" >
-  <h3 style="color: red" th:text="${error}"></h3>
+<div class="container">
+  <div th:if="${error!=null}">
+    <h3 th:text="${error}"></h3>
+  </div>
+  <form action="create" method="post">
+    <div class="form-group">
+      <label for="naziv">Naziv natjecanja:</label>
+      <input type="text" id="naziv" name="naziv" class="form-control" required th:value="${naziv}">
+    </div>
+
+    <div class="form-group">
+      <label for="popis">Popis natjecatelja (razdvoji ih s ';' ili prelaskom u novi red):</label>
+      <textarea id="popis" name="popis" class="form-control" rows="8" required th:value="${popis}"></textarea>
+    </div>
+
+    <p>Definiraj koliko koji ishod nosi bodova.</p>
+
+    <div class="form-group">
+      <label for="pobjeda">Pobjeda:</label>
+      <input type="number" id="pobjeda" name="pobjeda" class="form-control" required th:value="${pobjeda}">
+    </div>
+
+    <div class="form-group">
+      <label for="nerjeseno">Nerješeno:</label>
+      <input type="number" id="nerjeseno" name="nerjeseno" class="form-control" required th:value="${nerjeseno}">
+    </div>
+
+    <div class="form-group">
+      <label for="poraz">Poraz:</label>
+      <input type="number" id="poraz" name="poraz" class="form-control" required th:value="${poraz}">
+    </div>
+
+    <input type="submit" value="Stvori turnir" class="btn btn-primary purple-btn">
+  </form>
 </div>
-<form action="create" method="post">
-  <label for="naziv">Naziv natjecanja:</label>
-    <input type="text" id="naziv" name="naziv" required th:value="${naziv}"><br><br>
 
-  <label for="popis">Popis natjecatelja(razdvoji ih s ";" ili prelaskom u novi red):</label>
-    <textarea id="popis" name="popis" rows="8" required th:value="${popis}"></textarea><br><br>
-
-
-  <p>Definiraj koliko koji ishod nosi bodova.</p>
-
-  <label for="pobjeda">Pobjeda:</label>
-    <input type="number" id="pobjeda" name="pobjeda"  required th:value="${pobjeda}">
-
-  <label for="nerjeseno">Nerješeno:</label>
-    <input type="number" id="nerjeseno" name="nerjeseno" required th:value="${nerjeseno}">
-
-  <label for="poraz">Poraz:</label>
-    <input type="number" id="poraz" name="poraz" required th:value="${poraz}"><br><br>
-
-  <input type="submit" value="Stvori turnir">
-
-
-
-</form>
-
+<!-- Bootstrap JS (optional, for advanced features) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

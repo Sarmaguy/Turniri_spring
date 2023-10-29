@@ -115,16 +115,16 @@ public class Utakmica {
     public String toString() {
         String s = "";
         if (this.bye) {
-            return this.tim1 + " - " + "Bye";
+            return this.tim1 + " nije imao protivnika";
         } else {
             s = this.tim1 + " - " + this.tim2;
         }
        if (ishod == 0)
-           s += "   (utakmica je neodigrana)";
+           s += "  (utakmica je neodigrana)";
        else if (ishod == 3)
-              s += "\tUtakmica je zavrsila nerijeseno";
+              s += "  -->  Utakmica je zavrsila nerijeseno";
        else
-           s += ishod == 1 ? "\tPobjedio je: " + tim1 : "\tPobjedio je: " + tim2;
+           s += ishod == 1 ? "  -->  Pobjedio je: " + tim1 : "  -->  Pobjedio je: " + tim2;
         return s;
     }
 }
