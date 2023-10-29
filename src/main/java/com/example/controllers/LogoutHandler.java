@@ -53,7 +53,7 @@ public class LogoutHandler extends SecurityContextLogoutHandler {
         // URL will look like https://YOUR-DOMAIN/v2/logout?clientId=YOUR-CLIENT-ID&returnTo=http://localhost:3000
         String issuer = (String) getClientRegistration().getProviderDetails().getConfigurationMetadata().get("issuer");
         String clientId = getClientRegistration().getClientId();
-        String returnTo = "http://localhost:3000";
+        String returnTo = "https://turniri.onrender.com/";
 
         String logoutUrl = UriComponentsBuilder
                 .fromHttpUrl(issuer + "v2/logout?client_id={clientId}&returnTo={returnTo}")

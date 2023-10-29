@@ -30,4 +30,7 @@ public class EnvLoader2 {
     public static String getVariable(String key) {
         return envMap.get(key);
     }
+    public static String getAuth0ClientSecret() {
+        return envMap.get("AUTH0_CLIENT_SECRET");
+    }
 }

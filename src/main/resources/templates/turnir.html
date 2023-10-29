@@ -6,7 +6,10 @@
     <title>Title</title>
 </head>
 <body>
-
+<div th:if="${isOwner}">
+    <p>Adresa turnira je:</p>
+    <p th:text="${url}"></p>
+</div>
 <ol>
     <li th:each="kolo, koloIndex : ${kola}">
         <p> kolo </p>

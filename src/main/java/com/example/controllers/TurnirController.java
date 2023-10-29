@@ -32,6 +32,9 @@ public class TurnirController {
         model.addAttribute("turnir", turnir);
         model.addAttribute("isOwner", sub != null && principal != null && principal.getClaims().get("sub").toString().equals(sub));
 
+        //get full URL
+        String url = "https://turniri.onrender.com/turnir/" + turnir + "+" + sub;
+
         Turnir t;
         try {
             t = db.collection(sub).document(turnir).get().get().toObject(Turnir.class);
@@ -84,6 +87,7 @@ public class TurnirController {
 
 
         model.addAttribute("kola", kola);
+        model.addAttribute("url", url);
         return "turnir";
     }
 

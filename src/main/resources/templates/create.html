@@ -5,24 +5,27 @@
     <title>Stvori turnir</title>
 </head>
 <body>
+<div th:if="${error!=null}" >
+  <h3 style="color: red" th:text="${error}"></h3>
+</div>
 <form action="create" method="post">
   <label for="naziv">Naziv natjecanja:</label>
-    <input type="text" id="naziv" name="naziv" required><br><br>
+    <input type="text" id="naziv" name="naziv" required th:value="${naziv}"><br><br>
 
-  <label for="popis">Popis natjecatelja:</label>
-    <textarea id="popis" name="popis" rows="8" required></textarea><br><br>
+  <label for="popis">Popis natjecatelja(razdvoji ih s ";" ili prelaskom u novi red):</label>
+    <textarea id="popis" name="popis" rows="8" required th:value="${popis}"></textarea><br><br>
 
 
   <p>Definiraj koliko koji ishod nosi bodova.</p>
 
   <label for="pobjeda">Pobjeda:</label>
-    <input type="number" id="pobjeda" name="pobjeda"  required>
+    <input type="number" id="pobjeda" name="pobjeda"  required th:value="${pobjeda}">
 
   <label for="nerjeseno">Nerješeno:</label>
-    <input type="number" id="nerjeseno" name="nerjeseno" required>
+    <input type="number" id="nerjeseno" name="nerjeseno" required th:value="${nerjeseno}">
 
   <label for="poraz">Poraz:</label>
-    <input type="number" id="poraz" name="poraz" required><br><br>
+    <input type="number" id="poraz" name="poraz" required th:value="${poraz}"><br><br>
 
   <input type="submit" value="Stvori turnir">
 
